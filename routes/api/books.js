@@ -2,16 +2,13 @@
 const router = require("express").Router();
 const booksCon = require("../../controllers/booksCon");
 
-// "/api/saved"
+// "/api/books"
 router.route("/")
   .get(booksCon.findAll)
   .post(booksCon.create);
 
-// "/api/saved/:id"
-router
-  .route("/:id")
-  .get(booksCon.findById)
-  .put(booksCon.update)
+// "/api/books/:id"
+router.route("/:id")
   .delete(booksCon.remove);
 
 module.exports = router;
