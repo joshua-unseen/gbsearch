@@ -27,8 +27,7 @@ class Books extends React.Component {
     };
     render() {
         return (
-            <div>
-                <p>Saved books</p>
+            <div className="container">
                 <Results books={this.state.books} clickHandler={this.deleteBook} origin="saved" />
             </div>
         );

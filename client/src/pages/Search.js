@@ -35,8 +35,7 @@ class Search extends React.Component {
 
     render() {
         return (
-            <div>
-                <p>Search page</p>
+            <div className="container">
                 <SearchBox query={this.state.query} changeHandler={this.changeHandler} submitHandler={this.submitHandler} />
                 <Results books={this.state.books} clickHandler={this.saveBook} origin="search"/>
             </div>
