@@ -13,17 +13,17 @@ class Books extends React.Component {
     loadBooks = () => {
         API.getBooks()
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 this.setState({ books: res.data })
             }
             )
             .catch(err => console.log(err));
     };
     deleteBook = (book) => {
-        console.log(book);
+        // console.log(book);
         API.deleteBook(book._id)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 window.location.reload();
             })
             .catch(err => { console.log(err) });

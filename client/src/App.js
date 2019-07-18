@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Nav />
+        <Nav pathName={window.location.pathname} />
         <Switch>
           <Route exact path="/" component={Search} />
           <Route exact path="/search" component={Search} />
