@@ -21,7 +21,7 @@ module.exports = {
     console.log(req.body);
     db.Book
       .create(req.body)
-      .then(dbQRes => res.json(dbQRes))
+      .then(dbQRes => res.json(dbQRes.googleID))
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
@@ -34,7 +34,7 @@ module.exports = {
     db.Book
       .findById({ _id: req.params.id })
       .then(dbQRes => dbQRes.remove())
-      .then(dbQRes => res.json(dbQRes))
+      .then(dbQRes => res.json(dbQRes.googleID))
       .catch(err => res.status(422).json(err));
   }
 };

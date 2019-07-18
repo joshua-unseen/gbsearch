@@ -18,7 +18,7 @@ class Search extends React.Component {
         API.searchBooks(this.state.query)
             .then(res => {
                 console.log(res.data.items);
-                const books = res.data.items.map(elem => elem.volumeInfo);
+                const books = res.data.items;
                 this.setState({
                     books,
                     query: ""
@@ -29,7 +29,12 @@ class Search extends React.Component {
     saveBook = (book) => {
         console.log(book);
         API.saveBook(book)
-            .then(res => {console.log(res)})
+            .then(res => {
+                console.log(res.data);
+                const unsaved = this.state.books.filter(item => (item.id !== res.data));
+                console.log(unsaved);
+                this.setState({books: unsaved});
+            })
             .catch(err => {console.log(err)});
     };
 

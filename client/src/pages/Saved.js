@@ -21,8 +21,11 @@ class Books extends React.Component {
     };
     deleteBook = (book) => {
         console.log(book);
-        API.deleteBook(book.id)
-            .then(res => { console.log(res) })
+        API.deleteBook(book._id)
+            .then(res => {
+                console.log(res);
+                window.location.reload();
+            })
             .catch(err => { console.log(err) });
     };
     render() {

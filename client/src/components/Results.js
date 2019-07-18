@@ -4,24 +4,27 @@ import Book from "./Book";
 
 function renderBooks(books, origin, clickHandler) {
     return books.map((item, idx) => {
-        const theBook = {
-            title: item.title,
-            authors: item.authors,
-            link: item.infoLink,
-            description: item.description
-        };
+        let theBook = {};
         switch(origin) {
             case "search":
-                const imageLinks = item.imageLinks;
-                theBook.image = imageLinks ? imageLinks.thumbnail: null;
+                const {title, authors, infoLink, description} = item.volumeInfo;
+                const imageLinks = item.volumeInfo.imageLinks;
+                const image = imageLinks ? imageLinks.thumbnail: null;
+                const googleID = item.id;
+                theBook = {title, authors, link: infoLink, description, image, googleID};
                 break;
             case "saved":
-                theBook.id = item._id;
-                theBook.image = item.image;
+                theBook = item;
                 break;
             default:
                 console.log("you should never see this");
         }
+        // const theBook = {
+        //     title: item.title,
+        //     authors: item.authors,
+        //     link: item.infoLink,
+        //     description: item.description
+        // };
         return (<li key={idx} className="list-group-item"><Book info={theBook} origin={origin} clickHandler={clickHandler} /></li>);
     });
 }
