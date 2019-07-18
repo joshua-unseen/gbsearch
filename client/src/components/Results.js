@@ -22,14 +22,14 @@ function renderBooks(books, origin, clickHandler) {
             default:
                 console.log("you should never see this");
         }
-        return (<li key={idx}><Book info={theBook} origin={origin} clickHandler={clickHandler} /></li>);
+        return (<li key={idx} className="list-group-item"><Book info={theBook} origin={origin} clickHandler={clickHandler} /></li>);
     });
 }
 function Results(props) {
     return (
         <div>
             {/* <p>Results container.  Books go in here.</p> */}
-            <ul>{renderBooks(props.books, props.origin, props.clickHandler)}</ul>
+            <ul className="list-group">{renderBooks(props.books, props.origin, props.clickHandler)}</ul>
         </div>
     );
 }
